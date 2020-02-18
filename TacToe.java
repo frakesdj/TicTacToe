@@ -1,26 +1,52 @@
 import java.util.Scanner;
-
+import java.lang.Character;
 public class TacToe {
     int[][] board;
-    boolean character;
+    int player;
+    int bot;
+    int win;
     //Xs ARE 1
     //Os ARE 2
     //NOTHING CLEAR
-    public TacToe(boolean c)
+    public TacToe(int p, int b)
     {
         board = new int[3][3];
         clearBoard();
-        character = c;
+        player = p;
+        bot = b; 
     }
     
     public static void main(String[] args)
     {
-        Scanner reader = new Scanner(System.in);
-        System.out.println("Chose X or O by typing X or O");
-        
-
-        TacToe t = new TacToe(true);
-        t.drawToe();
+        TacToe t = null;
+        Scanner read = new Scanner(System.in);
+        while(t == null)
+        {
+            System.out.println("Chose X or O by typing X or O. You can also type q to quit.");
+            char d = read.next().charAt(0);
+            d = Character.toLowerCase(d);
+            if(d == 'x')
+            {
+                t = new TacToe(1, 2);
+            }
+            else if(d == 'o')
+            {
+                t = new TacToe(2, 1);
+            }
+            else if(d == 'q')
+            {
+                System.out.println("Quitting....");
+                break;
+            }
+            else
+            {
+                System.out.println("Woops! That's not a X or an O\n");
+            }
+        }
+        if(t != null)
+        {
+            t.drawToe();
+        }
     }
 
     //Clears board.
