@@ -4,7 +4,7 @@ public class theBoard {
     //Xs ARE 1
     //Os ARE 2
     //NOTHING CLEAR
-    public theBoard(int p, int b)
+    public theBoard()
     {
         board = new int[3][3];
         clearBoard();
@@ -17,30 +17,23 @@ public class theBoard {
 
     public boolean checkWin(int x, int y, int piece)
     {
-        if(x + 1 < 3)
-        {
-
+        if(board[0][y] == piece && board[1][y] == piece && board[2][y] == piece)
+        {   
+            return true;
         }
-        if(x - 1 >= 0)
+        if(board[x][0] == piece && board[x][1] == piece && board[x][2] == piece)
         {
-            
+            return true;
         }
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
+        if(board[0][0] == piece && board[1][1] == piece && board[2][2] == piece)
+        {
+            return true;
+        }
+        if(board[0][2] == piece && board[1][1] == piece && board[2][0] == piece)
+        {
+            return true;
+        }
+        return false;
     }
     public boolean setBoard(int x, int y, int piece)
     {
