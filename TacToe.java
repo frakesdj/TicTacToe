@@ -118,27 +118,27 @@ public class TacToe {
             {
                 if(playerHolder == 1 && (numPlayers == false || player == 1))
                 {
-                    System.out.println("\nIts X's turn. Enter your move.");
+                    System.out.println("\nIts X's turn. Enter your move.");//X takes turn
                 }
                 else if(playerHolder == 2 && (numPlayers == false || player == 2))
                 {
-                    System.out.println("\nIts O's turn. Enter your move.");
+                    System.out.println("\nIts O's turn. Enter your move.");//O takes turn
                 }
    
                 move = read.nextInt();
-                if(move <= 9 && move >=0)
+                if(move <= 9 && move >=0)//Checks if game is over
                 {
                     woof = new int[2];
                     woof = board.getCord(move);
                     meow = board.setBoard(woof[0], woof[1], playerHolder);
                 }
-                if(move < 0 || move > 9 || meow == false)
+                if(move < 0 || move > 9 || meow == false)//Checks to see if move is valid.
                 {
                     System.out.println("Invalid move.");
                 }
             }
-            board.drawToe();
-            win = board.checkWin(woof[0], woof[1], player);
+            board.drawToe();//Draws Board
+            win = board.checkWin(woof[0], woof[1], player);//Checks for win.
             if(win == false)
             {
                 if(playerHolder == 1)
