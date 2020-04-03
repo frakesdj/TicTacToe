@@ -1,55 +1,64 @@
+import java.util.Scanner;
+import java.lang.Character;
 public class TacToe {
-    int[][] board;
-    boolean character;
-    
-    public TacToe(boolean c)
+    //Xs ARE 1
+    //Os ARE 2
+    //NOTHING CLEAR
+    theBoard board;
+    public TacToe(int p, int b)
     {
-        board = new int[3][3];
-        clearBoard();
-        character = c;
+        board = new theBoard();
     }
     
     public static void main(String[] args)
     {
-        TacToe t = new TacToe(true);
-        t.drawToe();
+        TacToe t = new TacToe(1, 2);
+        t.gameStart();
     }
-    public void clearBoard()
+    public void gameStart()
     {
-        for(int x = 0; x < 3; x++)
+        board.clearBoard();
+        Scanner read = new Scanner(System.in);
+        char d = 'q';
+        while(true)
         {
-            for(int j = 0; j < 3; j++)
+            System.out.println("Chose X or O by typing X or O. You can also type q to quit.");
+            d = read.next().charAt(0);
+            d = Character.toLowerCase(d);
+            if(d == 'x')
             {
-                board[j][x] = 0;
+                break;
+            }
+            else if(d == 'o')
+            {
+                break;
+            }
+            else if(d == 'q')
+            {
+                System.out.println("Quitting....");
+                break;
+            }
+            else
+            {
+                System.out.println("Woops! That's not a X or an O\n");
             }
         }
+        if(d != 'q')
+        {
+           board.drawToe();
+           board.setBoard( 1, 1, 2);
+           System.out.println("\n\n");
+           board.drawToe();
+           System.out.println("\n\n");
+           board.setBoard( 0, 0, 1);
+           board.setBoard( 0, 1, 1);
+           board.setBoard( 0, 2, 1);
+           if(board.checkWin(0, 2, 1))
+           {
+               System.out.println("Won \n");
+           }
+           board.drawToe();
+        }
+    }
 
-    }
-    public void drawToe()
-    {
-        System.out.println("   |     |   ");
-        System.out.println(" " + getShape(board[0][0]) + " |  " + getShape(board[0][1]) + "  | " + getShape(board[0][2]));
-        System.out.println("___|_____|___");
-        System.out.println("   |     |   ");
-        System.out.println(" " + getShape(board[1][0]) + " |  " + getShape(board[1][1]) + "  | " + getShape(board[1][2]));
-        System.out.println("___|_____|___");
-        System.out.println("   |     |   ");
-        System.out.println(" " + getShape(board[2][0]) + " |  " + getShape(board[2][1]) + "  | " + getShape(board[2][2]));
-        System.out.println("   |     |   ");
-    }
-    public String getShape(int shape)
-    {
-        if(shape == 0)
-        {
-            return " ";
-        }
-        else if(shape == 1)
-        {
-            return "X";
-        }
-        else
-        {
-            return "O";
-        }
-    }
 }
