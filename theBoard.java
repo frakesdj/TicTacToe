@@ -1,6 +1,7 @@
 import java.lang.Character;
 public class theBoard {
     int[][] board;
+    theBoard up;
     //Xs ARE 1
     //Os ARE 2
     //NOTHING CLEAR
@@ -8,6 +9,7 @@ public class theBoard {
     {
         board = new int[3][3];
         clearBoard();
+        up = null;
     }
     
     public int[][] getBoard()
@@ -25,6 +27,7 @@ public class theBoard {
         {
             return true;
         }
+        //check diagnols
         if(board[0][0] == piece && board[1][1] == piece && board[2][2] == piece)
         {
             return true;
@@ -64,19 +67,66 @@ public class theBoard {
      * Uses getShape to know what shape to print;
      */
     public void drawToe()
-    {
-        System.out.println("   |     |   ");
-        System.out.println(" " + getShape(board[0][0]) + " |  " + getShape(board[0][1]) + "  | " + getShape(board[0][2]));
-        System.out.println("___|_____|___");
-        System.out.println("   |     |   ");
-        System.out.println(" " + getShape(board[1][0]) + " |  " + getShape(board[1][1]) + "  | " + getShape(board[1][2]));
-        System.out.println("___|_____|___");
-        System.out.println("   |     |   ");
-        System.out.println(" " + getShape(board[2][0]) + " |  " + getShape(board[2][1]) + "  | " + getShape(board[2][2]));
-        System.out.println("   |     |   ");
+    {   System.out.println("\t   1    |   2   |   3   ");
+        System.out.println("\t " +  getTop(board[0][0]) + "|" + getTop(board[1][0]) + "| " + getTop(board[2][0]));
+        System.out.println("\t " +  getMid(board[0][0]) + "|" + getMid(board[1][0]) + "| " + getMid(board[2][0]));
+        System.out.println("\t " +  getBot(board[0][0]) + "|" + getBot(board[1][0]) + "| " + getBot(board[2][0]));
+        System.out.println("\t________|_______|________");
+        System.out.println("\t    4   |   5   |   6   ");
+        System.out.println("\t " +  getTop(board[0][1]) + "|" + getTop(board[1][1]) + "| " + getTop(board[2][1]));
+        System.out.println("\t " +  getMid(board[0][1]) + "|" + getMid(board[1][1]) + "| " + getMid(board[2][1]));
+        System.out.println("\t " +  getBot(board[0][1]) + "|" + getBot(board[1][1]) + "| " + getBot(board[2][1]));
+        System.out.println("\t________|_______|________");
+        System.out.println("\t    7   |   8   |   9  ");
+        System.out.println("\t " +  getTop(board[0][2]) + "|" + getTop(board[1][2]) + "| " + getTop(board[2][2]));
+        System.out.println("\t " +  getMid(board[0][2]) + "|" + getMid(board[1][2]) + "| " + getMid(board[2][2]));
+        System.out.println("\t " +  getBot(board[0][2]) + "|" + getBot(board[1][2]) + "| " + getBot(board[2][2]));
     }
 
+
     // Returns shape to be printed by array.
+    public int[] getCord(int block)
+    {
+        int[] meow = new int[2];
+        switch (block) {
+            case 1: meow[0] = 0;
+                    meow[1] = 0;
+                    break;
+            
+            case 2: meow[0] = 1;
+                    meow[1] = 0;
+                    break; 
+
+            case 3: meow[0] = 2;
+                    meow[1] = 0;
+                    break;
+
+            case 4: meow[0] = 0;
+                    meow[1] = 1;
+                    break;
+
+            case 5: meow[0] = 1;
+                    meow[1] = 1;
+                    break;
+
+            case 6: meow[0] = 2;
+                    meow[1] = 1;
+                    break;
+
+            case 7: meow[0] = 0;
+                    meow[1] = 2;
+                    break;
+
+            case 8: meow[0] = 1;
+                    meow[1] = 2;
+                    break;
+
+            default: meow[0] = 2;
+                     meow[1] = 2;
+                     break;
+        }
+        return meow;
+    }
     public String getShape(int shape)
     {
         if(shape == 0)
@@ -92,4 +142,51 @@ public class theBoard {
             return "O";
         }
     }
+    public String getTop(int shape)
+    {
+        if(shape == 0)
+        {
+            return "       ";
+        }
+        if(shape == 1)
+        {
+            return "  \\ /  ";
+        }
+        else
+        {
+            return "   _   ";
+        }
+
+    }
+    public String getMid(int shape)
+    {
+        if(shape == 0)
+        {
+            return "       ";
+        }
+        if(shape == 1)
+        {
+           return "   /   ";
+        }
+        else
+        {
+            return "  / \\  ";
+        }
+    }
+    public String getBot(int shape)
+    {
+        if(shape == 0)
+        {
+            return "       ";
+        }
+        if(shape == 1)
+        {
+            return "  / \\  ";
+        }
+        else
+        {
+            return "  \\_/  ";
+        }
+    }
 }
+    
