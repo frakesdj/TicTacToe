@@ -21,15 +21,18 @@ Web-page - [Web-page](https://student2.cs.appstate.edu/frakesdj/)
  2. A prompt will appear for player one to type X or O to select thier character
 
 ![enter image description here](https://github.com/frakesdj/TicTacToe/blob/master/prompt.PNG?raw=true)
+ 
  3. You may also type q to quit.
  4. Hit enter to proceed
  5.  An empty board will appear
  
  ![enter image description here](https://github.com/frakesdj/TicTacToe/blob/master/board.PNG?raw=true)
+ 
  6. To move type the corresponding number and hit enter
  7. The board will refresh it is now the other players turn
  
 ![enter image description here](https://github.com/frakesdj/TicTacToe/blob/master/turn.PNG?raw=true)
+ 
  8. The game will end after the board is full or someone wins
  ## Code Example
 ![enter image description here](https://github.com/frakesdj/TicTacToe/blob/master/GameSnip.PNG?raw=true)
